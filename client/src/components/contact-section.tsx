@@ -49,7 +49,7 @@ export default function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     try {
       const validatedData = insertContactSchema.parse(formData);
       contactMutation.mutate(validatedData);
@@ -77,7 +77,7 @@ export default function ContactSection() {
             Ready to start your driving journey? Contact us today for more information or to schedule your first lesson.
           </p>
         </div>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="bg-card p-8 rounded-xl shadow-lg">
@@ -109,7 +109,7 @@ export default function ContactSection() {
                   />
                 </div>
               </div>
-              
+
               <div>
                 <Label htmlFor="email">Email Address</Label>
                 <Input
@@ -122,7 +122,7 @@ export default function ContactSection() {
                   data-testid="input-email"
                 />
               </div>
-              
+
               <div>
                 <Label htmlFor="service">Service of Interest</Label>
                 <Select value={formData.service} onValueChange={(value) => handleInputChange("service", value)}>
@@ -139,7 +139,7 @@ export default function ContactSection() {
                   </SelectContent>
                 </Select>
               </div>
-              
+
               <div>
                 <Label htmlFor="message">Message</Label>
                 <Textarea
@@ -151,9 +151,9 @@ export default function ContactSection() {
                   data-testid="textarea-message"
                 />
               </div>
-              
-              <Button 
-                type="submit" 
+
+              <Button
+                type="submit"
                 className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200 hover-lift"
                 disabled={contactMutation.isPending}
                 data-testid="button-send-message"
@@ -162,7 +162,7 @@ export default function ContactSection() {
               </Button>
             </form>
           </div>
-          
+
           {/* Contact Info & Map */}
           <div className="space-y-8">
             <div className="bg-card p-8 rounded-xl shadow-lg">
@@ -180,7 +180,7 @@ export default function ContactSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start" data-testid="contact-phone">
                   <div className="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
                     <Phone className="text-secondary" size={20} />
@@ -193,7 +193,7 @@ export default function ContactSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start" data-testid="contact-email">
                   <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
                     <Mail className="text-accent" size={20} />
@@ -206,7 +206,7 @@ export default function ContactSection() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex items-start" data-testid="contact-hours">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
                     <Clock className="text-primary" size={20} />
@@ -222,17 +222,22 @@ export default function ContactSection() {
                 </div>
               </div>
             </div>
-            
-            {/* Google Maps Placeholder */}
+
+            {/* Google Maps Embed */}
             <div className="bg-card p-4 rounded-xl shadow-lg">
-              <div className="bg-muted h-64 rounded-lg flex items-center justify-center" data-testid="map-placeholder">
-                <div className="text-center text-muted-foreground">
-                  <Map className="mx-auto mb-2" size={48} />
-                  <div>Google Maps Integration</div>
-                  <div className="text-sm">Interactive map will be displayed here</div>
-                </div>
+              <div className="h-64 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d745.8264479349477!2d-38.49572938068177!3d-3.8325204340122894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c748974adea79d%3A0x6d335f6b60942225!2sAuto%20Escola%20Prime!5e0!3m2!1spt-BR!2sbr!4v1756353748549!5m2!1spt-BR!2sbr"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
               </div>
             </div>
+
           </div>
         </div>
       </div>

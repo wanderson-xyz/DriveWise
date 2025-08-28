@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoEscola Prime - Learn to Drive with Confidence</title>
+    <meta name="description" content="Professional driving school with experienced instructors, modern vehicles, and proven results. Start your driving journey today!">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["Inter", "sans-serif"],
+                }
+            },
+        }
+    };
+    </script>
+    
+    <style>
+        :root {
+            --background: hsl(210 20% 98%);
+            --foreground: hsl(210 20% 15%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(210 20% 15%);
+            --primary: hsl(210 100% 30%);
+            --primary-foreground: hsl(0 0% 98%);
+            --secondary: hsl(120 60% 35%);
+            --secondary-foreground: hsl(0 0% 98%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(210 20% 50%);
+            --accent: hsl(25 95% 55%);
+            --accent-foreground: hsl(0 0% 98%);
+            --destructive: hsl(0 84% 60%);
+            --destructive-foreground: hsl(0 0% 98%);
+            --border: hsl(210 40% 90%);
+            --input: hsl(210 40% 94%);
+            --ring: hsl(210 100% 30%);
+            --radius: 0.5rem;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-background text-foreground">
+    <!-- @COMPONENT: Navigation -->
+    <nav class="sticky top-0 z-50 glass-effect border-b border-border">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary">
+                            <i class="fas fa-car mr-2"></i>
+                            AutoEscola Prime
+                        </h1>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Home</a>
+                        <a href="#about" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">About</a>
+                        <a href="#services" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Services</a>
+                        <a href="#testimonials" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Testimonials</a>
+                        <a href="#contact" class="text-foreground hover:text-primary transition-colors duration-200 font-medium">Contact</a>
+                    </div>
+                </div>
+                
+                <div class="hidden md:block">
+                    <button class="bg-accent text-accent-foreground px-6 py-2 rounded-md font-semibold hover:bg-accent/90 transition-colors duration-200">
+                        Get Started
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button class="text-foreground hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- @END_COMPONENT: Navigation -->
+
+    <!-- @COMPONENT: Hero Section -->
+    <section id="home" class="hero-bg relative overflow-hidden">
+        <div class="absolute inset-0 bg-black opacity-20"></div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-white">
+                    <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Learn to Drive with 
+                        <span class="text-accent">Confidence</span>
+                    </h1>
+                    <p class="text-xl lg:text-2xl mb-8 opacity-90">
+                        Professional instruction, modern vehicles, and proven results. Start your driving journey with the most trusted driving school in the city.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-accent text-accent-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-accent/90 transition-all duration-200 hover-lift">
+                            <i class="fab fa-whatsapp mr-2"></i>
+                            Chat on WhatsApp
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-primary transition-all duration-200">
+                            View Our Services
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="lg:block">
+                    <!-- Modern driving school with instructor teaching student in car -->
+                    <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600" 
+                         alt="Driving instructor teaching student" 
+                         class="rounded-2xl shadow-2xl w-full h-auto" />
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center text-white">
+                    <div class="text-3xl lg:text-4xl font-bold mb-2">15+</div>
+                    <div class="text-lg opacity-90">Years Experience</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-3xl lg:text-4xl font-bold mb-2">95%</div>
+                    <div class="text-lg opacity-90">Pass Rate</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-3xl lg:text-4xl font-bold mb-2">5000+</div>
+                    <div class="text-lg opacity-90">Students Trained</div>
+                </div>
+                <div class="text-center text-white">
+                    <div class="text-3xl lg:text-4xl font-bold mb-2">24/7</div>
+                    <div class="text-lg opacity-90">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Hero Section -->
+
+    <!-- @COMPONENT: Features Section -->
+    <section class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4">Why Choose AutoEscola Prime?</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    We combine traditional teaching methods with modern technology to provide the best learning experience.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-graduation-cap text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Expert Instructors</h3>
+                    <p class="text-muted-foreground">
+                        Our certified instructors have years of experience and a passion for teaching safe driving practices.
+                    </p>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift text-center">
+                    <div class="w-16 h-16 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-car text-2xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Modern Vehicles</h3>
+                    <p class="text-muted-foreground">
+                        Learn in our fleet of modern, well-maintained vehicles equipped with the latest safety features.
+                    </p>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift text-center">
+                    <div class="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-clock text-2xl text-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-4">Flexible Schedule</h3>
+                    <p class="text-muted-foreground">
+                        Choose from morning, afternoon, or evening lessons that fit your busy lifestyle.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Features Section -->
+
+    <!-- @COMPONENT: About Section -->
+    <section id="about" class="py-20 bg-muted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-6">About AutoEscola Prime</h2>
+                    <p class="text-lg text-muted-foreground mb-6">
+                        Since 2008, AutoEscola Prime has been the leading driving school in our city, helping thousands of students achieve their driving dreams. Our commitment to excellence and safety has earned us a reputation as the most trusted driving school in the region.
+                    </p>
+                    <p class="text-lg text-muted-foreground mb-8">
+                        We believe that learning to drive should be an empowering and confident experience. That's why we've invested in the best instructors, modern facilities, and a comprehensive curriculum that prepares you for real-world driving situations.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-primary mb-2">50+</div>
+                            <div class="text-sm text-muted-foreground">Modern Vehicles</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-secondary mb-2">20+</div>
+                            <div class="text-sm text-muted-foreground">Expert Instructors</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Modern driving school facility exterior -->
+                    <img src="https://pixabay.com/get/g2b79cbe45206c8104a2179894d0e600a0a4aff049aaeb3148d14d04e791ef5662920a7e6ad3cb2e4cde3af384923e536_1280.jpg" 
+                         alt="Modern driving school building" 
+                         class="rounded-lg shadow-lg hover-lift" />
+                    
+                    <!-- Professional driving instructor with student -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Driving instructor teaching" 
+                         class="rounded-lg shadow-lg hover-lift mt-8" />
+                    
+                    <!-- Student practicing in modern car -->
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Student learning to drive" 
+                         class="rounded-lg shadow-lg hover-lift -mt-8" />
+                    
+                    <!-- Fleet of modern driving school cars -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=300" 
+                         alt="Fleet of driving school vehicles" 
+                         class="rounded-lg shadow-lg hover-lift" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: About Section -->
+
+    <!-- @COMPONENT: Services Section -->
+    <section id="services" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4">Our Services</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Comprehensive driving education for all license categories and experience levels.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">Category B License</h3>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-car text-primary"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Complete course for passenger cars including theory classes, simulator training, and practical lessons.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            30 hours theory classes
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            10 hours simulator
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            20 hours practical lessons
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">Category A License</h3>
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-motorcycle text-secondary"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Motorcycle license training with specialized instructors and modern bikes for all skill levels.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            20 hours theory classes
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            5 hours simulator
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            15 hours practical lessons
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">Category C License</h3>
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-truck text-accent"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Professional truck driving course for commercial vehicle operation and career opportunities.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            40 hours theory classes
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            15 hours simulator
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            30 hours practical lessons
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">Defensive Driving</h3>
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-primary"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Advanced safety course for experienced drivers to improve skills and reduce accident risk.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            8 hours theory classes
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            4 hours practical training
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Certificate included
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">License Renewal</h3>
+                        <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-sync-alt text-secondary"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Quick and convenient license renewal service with refresher classes and updated regulations.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            4 hours refresher course
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Updated regulations
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Documentation support
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg hover-lift border border-border">
+                    <div class="flex items-center justify-between mb-6">
+                        <h3 class="text-xl font-semibold">Private Lessons</h3>
+                        <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-accent"></i>
+                        </div>
+                    </div>
+                    <p class="text-muted-foreground mb-6">
+                        Personalized one-on-one instruction tailored to your specific needs and learning pace.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Flexible scheduling
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Customized curriculum
+                        </li>
+                        <li class="flex items-center text-sm">
+                            <i class="fas fa-check text-secondary mr-2"></i>
+                            Expert instructor
+                        </li>
+                    </ul>
+                    <button class="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200">
+                        View Pricing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Services Section -->
+
+    <!-- @COMPONENT: Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-muted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4">What Our Students Say</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Don't just take our word for it - hear from our successful graduates.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-card p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-accent">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-6">
+                        "AutoEscola Prime made learning to drive such a positive experience. My instructor was patient, professional, and really helped build my confidence behind the wheel."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Happy female student portrait -->
+                        <img src="https://pixabay.com/get/ge7cc1122fec68fe0fe997e715a0725b66dda7014c6bfe32a8701be83aaefa057e9900adb1e3c20afc2425a77e1653b12e6d117311cf7bc0fb0b3d1b08fdf0949_1280.jpg" 
+                             alt="Maria Silva - satisfied student" 
+                             class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <div class="font-semibold" data-mock="true">Maria Silva</div>
+                            <div class="text-sm text-muted-foreground">Category B Graduate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-accent">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-6">
+                        "Passed my test on the first try thanks to the excellent preparation. The modern cars and professional instructors made all the difference."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Happy male student portrait -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=64&h=64" 
+                             alt="João Santos - satisfied student" 
+                             class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <div class="font-semibold" data-mock="true">João Santos</div>
+                            <div class="text-sm text-muted-foreground">Category B Graduate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-card p-8 rounded-xl shadow-lg">
+                    <div class="flex items-center mb-6">
+                        <div class="flex text-accent">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <blockquote class="text-muted-foreground mb-6">
+                        "The motorcycle course was fantastic! Great instructors, safety-focused training, and flexible scheduling that worked with my job."
+                    </blockquote>
+                    <div class="flex items-center">
+                        <!-- Happy young woman portrait -->
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=64&h=64" 
+                             alt="Ana Costa - satisfied student" 
+                             class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <div class="font-semibold" data-mock="true">Ana Costa</div>
+                            <div class="text-sm text-muted-foreground">Category A Graduate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Testimonials Section -->
+
+    <!-- @COMPONENT: Contact Section -->
+    <section id="contact" class="py-20 bg-background">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold text-foreground mb-4">Get in Touch</h2>
+                <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+                    Ready to start your driving journey? Contact us today for more information or to schedule your first lesson.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="bg-card p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-semibold mb-6">Send us a Message</h3>
+                    <form class="space-y-6" data-implementation="Form should validate and send email">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-foreground mb-2">Full Name</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       placeholder="Your full name" data-mock="true">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-foreground mb-2">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" required 
+                                       class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                       placeholder="Your phone number" data-mock="true">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-foreground mb-2">Email Address</label>
+                            <input type="email" id="email" name="email" required 
+                                   class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                   placeholder="your.email@example.com" data-mock="true">
+                        </div>
+                        
+                        <div>
+                            <label for="service" class="block text-sm font-medium text-foreground mb-2">Service of Interest</label>
+                            <select id="service" name="service" 
+                                    class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option>Category B License</option>
+                                <option>Category A License</option>
+                                <option>Category C License</option>
+                                <option>Defensive Driving</option>
+                                <option>Private Lessons</option>
+                                <option>License Renewal</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-foreground mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" 
+                                      class="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                                      placeholder="Tell us about your driving goals and any questions you have..." data-mock="true"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-200 hover-lift">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info & Map -->
+                <div class="space-y-8">
+                    <div class="bg-card p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-semibold mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold mb-1">Address</div>
+                                    <div class="text-muted-foreground" data-mock="true">
+                                        123 Main Street<br>
+                                        Downtown, City 12345
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-secondary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-phone text-secondary"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold mb-1">Phone</div>
+                                    <div class="text-muted-foreground" data-mock="true">
+                                        +1 (555) 123-4567<br>
+                                        +1 (555) 987-6543
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-accent"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold mb-1">Email</div>
+                                    <div class="text-muted-foreground" data-mock="true">
+                                        info@autoescolaprime.com<br>
+                                        support@autoescolaprime.com
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-clock text-primary"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold mb-1">Business Hours</div>
+                                    <div class="text-muted-foreground text-sm">
+                                        Monday - Friday: 8:00 AM - 8:00 PM<br>
+                                        Saturday: 9:00 AM - 5:00 PM<br>
+                                        Sunday: Closed
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Google Maps Placeholder -->
+                    <div class="bg-card p-4 rounded-xl shadow-lg">
+                        <div class="bg-muted h-64 rounded-lg flex items-center justify-center" data-implementation="Replace with Google Maps embed">
+                            <div class="text-center text-muted-foreground">
+                                <i class="fas fa-map text-4xl mb-2"></i>
+                                <div>Google Maps Integration</div>
+                                <div class="text-sm">Interactive map will be displayed here</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- @END_COMPONENT: Contact Section -->
+
+    <!-- @COMPONENT: Footer -->
+    <footer class="bg-foreground text-background py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="lg:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">
+                        <i class="fas fa-car mr-2"></i>
+                        AutoEscola Prime
+                    </h3>
+                    <p class="text-background/80 mb-6 max-w-md">
+                        Your trusted partner in driving education. We've been helping students achieve their driving goals with confidence and safety for over 15 years.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors duration-200">
+                            <i class="fab fa-youtube text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-background/80 hover:text-background transition-colors duration-200">Home</a></li>
+                        <li><a href="#about" class="text-background/80 hover:text-background transition-colors duration-200">About Us</a></li>
+                        <li><a href="#services" class="text-background/80 hover:text-background transition-colors duration-200">Services</a></li>
+                        <li><a href="#testimonials" class="text-background/80 hover:text-background transition-colors duration-200">Testimonials</a></li>
+                        <li><a href="#contact" class="text-background/80 hover:text-background transition-colors duration-200">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">License Types</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-background/80 hover:text-background transition-colors duration-200">Category A (Motorcycle)</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-background transition-colors duration-200">Category B (Car)</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-background transition-colors duration-200">Category C (Truck)</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-background transition-colors duration-200">Defensive Driving</a></li>
+                        <li><a href="#" class="text-background/80 hover:text-background transition-colors duration-200">License Renewal</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-background/20 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-background/60 mb-4 md:mb-0">
+                        © 2024 AutoEscola Prime. All rights reserved.
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-background/60 hover:text-background transition-colors duration-200">Privacy Policy</a>
+                        <a href="#" class="text-background/60 hover:text-background transition-colors duration-200">Terms of Service</a>
+                        <a href="#" class="text-background/60 hover:text-background transition-colors duration-200">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- @END_COMPONENT: Footer -->
+
+    <!-- @COMPONENT: WhatsApp Float Button -->
+    <a href="https://wa.me/5511999999999?text=Hello!%20I'm%20interested%20in%20getting%20my%20driver's%20license.%20Can%20you%20help?" 
+       target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 hover:scale-110 transition-all duration-300 z-50"
+       data-implementation="Replace phone number with actual WhatsApp number">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+    <!-- @END_COMPONENT: WhatsApp Float Button -->
+
+    <script>
+        // TODO: Implement smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // TODO: Implement form validation and submission
+        const form = document.querySelector('form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Form validation logic here
+                console.log('Form submitted - implement actual form handling');
+                
+                // Show success message (placeholder)
+                alert('Thank you for your message! We\'ll get back to you soon.');
+            });
+        }
+
+        // TODO: Implement intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe cards for animation on scroll
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
