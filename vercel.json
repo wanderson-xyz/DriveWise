@@ -10,10 +10,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "functions": {
-    "api/contacts.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
