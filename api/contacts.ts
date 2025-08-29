@@ -1,7 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { contacts, insertContactSchema } from '../shared/schema';
+import { contacts, insertContactSchema } from './shared/schema';
 import { desc } from 'drizzle-orm';
 import { z } from 'zod';
 
