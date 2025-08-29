@@ -1,12 +1,36 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { neon } from '@neondatabase/serverless';
 import { drizzle } from 'drizzle-orm/neon-http';
-import { contacts, insertContactSchema } from './shared/schema';
 import { desc } from 'drizzle-orm';
 import { z } from 'zod';
+import { sql } from "drizzle-orm";
+import { pgTable, text, varchar, timestamp } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
-const sql = neon(process.env.DATABASE_URL!);
-const db = drizzle(sql);
+// Schema definitions inline to avoid import issues in Vercel
+const contacts = pgTable("contacts", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  service: text("service").notNull(),
+  message: text("message"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+const insertContactSchema = createInsertSchema(contacts).omit({
+  id: true,
+  createdAt: true,
+}).extend({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  email: z.string().email("Please enter a valid email address"),
+  phone: z.string().min(10, "Please enter a valid phone number"),
+  service: z.string().min(1, "Please select a service"),
+  message: z.string().optional(),
+});
+
+const sql_client = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql_client);
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
