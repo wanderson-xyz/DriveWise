@@ -1,0 +1,50 @@
+Quero que você verifique se o meu projeto já está pronto para deploy no Vercel usando Neon + Drizzle ORM. 
+
+Assegure os seguintes pontos:
+
+1. Variáveis de ambiente
+   - Confirme se existe a variável DATABASE_URL no Replit Secrets.
+   - Confirme se o valor dela é o mesmo usado no código (process.env.DATABASE_URL).
+   - Se não estiver, adicione/ajuste.
+
+2. Arquivo drizzle.config.ts
+   - Deve usar process.env.DATABASE_URL e apontar schema para ./shared/schema.ts.
+   - Dialeto precisa ser "postgresql".
+   - Output deve ser ./drizzle.
+   - Se algo estiver diferente, ajuste.
+
+3. Arquivo shared/schema.ts
+   - Deve conter a tabela "contacts" com os campos:
+     - id: serial primary key
+     - name: text not null
+     - email: text not null
+     - createdAt: timestamp defaultNow not null
+   - Também deve exportar insertContactSchema do Zod validando name (string não vazia) e email (formato válido).
+   - Se não existir, crie ou ajuste.
+
+4. Arquivo api/contacts.ts
+   - Deve importar neon e drizzle de drizzle-orm/neon-http.
+   - Deve usar process.env.DATABASE_URL na conexão.
+   - Deve implementar:
+     - POST: valida com insertContactSchema e insere no banco retornando o registro.
+     - GET: retorna todos os contatos ordenados por createdAt desc.
+   - Se estiver usando array em memória ou Express, corrija.
+
+5. Package.json
+   - Deve ter script "db:push": "drizzle-kit push".
+   - Opcional: script "db:studio": "drizzle-kit studio".
+   - Se não tiver, adicione.
+
+6. vercel.json
+   - Deve existir.
+   - Configurar buildCommand = "npm run build" e outputDirectory = "dist/public".
+   - Rewrites:
+     - "/api/:path*" → "/api/:path*"
+     - "/(.*)" → "/index.html"
+   - Functions: api/*.ts deve usar runtime "nodejs22.x".
+   - Se não estiver correto, ajuste.
+
+Depois de verificar tudo isso:
+- Me devolva um relatório do que já estava certo e do que foi corrigido.
+- Se algo faltava, ajuste automaticamente.
+- Certifique-se de que o projeto está 100% pronto para deploy no Vercel.

@@ -1,9 +1,12 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { insertContactSchema } from "../shared/schema";
-import { z } from "zod";
+import { neon } from '@neondatabase/serverless';
+import { drizzle } from 'drizzle-orm/neon-http';
+import { contacts, insertContactSchema } from '../shared/schema';
+import { desc } from 'drizzle-orm';
+import { z } from 'zod';
 
-// Simple in-memory storage for demo (in production, use a database)
-const contacts: any[] = [];
+const sql = neon(process.env.DATABASE_URL!);
+const db = drizzle(sql);
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
@@ -18,21 +21,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === 'POST') {
     try {
       const validatedData = insertContactSchema.parse(req.body);
-      const contact = {
-        ...validatedData,
-        id: Math.random().toString(36).substring(7),
-        createdAt: new Date().toISOString(),
-      };
       
-      contacts.push(contact);
+      const [newContact] = await db
+        .insert(contacts)
+        .values(validatedData)
+        .returning();
       
-      // In a real application, you would send an email here
-      console.log("New contact submission:", contact);
+      console.log('New contact submission:', newContact);
       
       return res.json({ 
         success: true, 
         message: "Thank you for your message! We'll get back to you soon.",
-        contact: { id: contact.id }
+        contact: { id: newContact.id }
       });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -53,7 +53,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   if (req.method === 'GET') {
     try {
-      return res.json({ contacts });
+      const allContacts = await db
+        .select()
+        .from(contacts)
+        .orderBy(desc(contacts.createdAt));
+      
+      return res.json({ contacts: allContacts });
     } catch (error) {
       console.error("Error fetching contacts:", error);
       return res.status(500).json({
